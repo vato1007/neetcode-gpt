@@ -1,8 +1,17 @@
 import numpy as np
 
 class Solution:
-    def softmax(self, z):
-        z = z - np.max(z)
-        exp_z = np.exp(z)
+    def binary_cross_entropy(self, y_true, y_pred):
+        loss = -np.mean(
+            y_true * np.log(y_pred) +
+            (1 - y_true) * np.log(1 - y_pred)
+        )
 
-        return np.round(exp_z / np.sum(exp_z), 4)
+        return round(float(loss), 4)
+
+    def categorical_cross_entropy(self, y_true, y_pred):
+        loss = -np.mean(
+            np.sum(y_true * np.log(y_pred), axis=1)
+        )
+
+        return round(float(loss), 4)
