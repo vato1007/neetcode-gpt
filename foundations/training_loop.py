@@ -12,7 +12,6 @@ class Solution:
 
         for _ in range(epochs):
             y_pred = X @ w + b
-
             error = y_pred - y
 
             dw = (2 / n) * (X.T @ error)
